@@ -45,7 +45,7 @@ async function GetAuthRequest(req,res) {
     request.id = '6bcf6e0c-1577-45b3-b309-f8d05e9a0951';
     request.thid = '6bcf6e0c-1577-45b3-b309-f8d05e9a0951';
     request.typ = "application/iden3comm-plan-json";
-    reqeust.type = "https://iden3-communication.io/authorization/1.0/request";
+    request.type = "https://iden3-communication.io/authorization/1.0/request";
 
     // Add request for a specific proof
     const proofRequest = {
