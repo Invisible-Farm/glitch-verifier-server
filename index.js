@@ -1,9 +1,12 @@
 const express = require('express');
 const {auth, resolver, loaders} = require('@iden3/js-iden3-auth')
 const getRawBody = require('raw-body')
-
+const cors = require('cors');
 const app = express();
 const port = 10011;
+app.use(cors({
+    origin: '*', // 모든 출처 허용 옵션. true 를 써도 된다.
+}));
 
 app.use(express.static('static'));
 app.get("/api/sign-in", (req, res) => {
