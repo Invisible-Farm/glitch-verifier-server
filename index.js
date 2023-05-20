@@ -29,8 +29,8 @@ async function GetAuthRequest(req,res) {
     const hostUrl = "http://3.26.13.71:10011";
     const sessionId = 1;
     const callbackURL = "/api/callback"
-    const audience = "did:polygonid:polygon:mumbai:2qM3XETXF7y49ZA6gDSpzuw38ZSQdfrY9tJtwcjucH"
-    // const audience = "did:polygonid:polygon:mumbai:2qDyy1kEo2AYcP3RT4XGea7BtxsY285szg6yP9SPrs"
+    // const audience = "did:polygonid:polygon:mumbai:2qM3XETXF7y49ZA6gDSpzuw38ZSQdfrY9tJtwcjucH" // junho
+    const audience = "did:polygonid:polygon:mumbai:2qJNJzoNXHL32HPPdbJdWAj1PTjjQNi24PyNok6V8G" // dohyeon
 
     const uri = `${hostUrl}${callbackURL}?sessionId=${sessionId}`;
     console.log('GetAuthRequest uri', uri);
@@ -42,8 +42,8 @@ async function GetAuthRequest(req,res) {
         uri,
     );
 
-    request.id = '7f38a193-0918-4a48-9fac-36adfdb8b542';
-    request.thid = '7f38a193-0918-4a48-9fac-36adfdb8b542';
+    request.id = '6bcf6e0c-1577-45b3-b309-f8d05e9a0951';
+    request.thid = '6bcf6e0c-1577-45b3-b309-f8d05e9a0951';
 
     // Add request for a specific proof
     const proofRequest = {
@@ -55,7 +55,7 @@ async function GetAuthRequest(req,res) {
             context: 'https://raw.githubusercontent.com/0xPolygonID/tutorial-examples/main/credential-schema/schemas-examples/proof-of-dao-role/proof-of-dao-role.jsonld',
             credentialSubject: {
                 role: {
-                    $eq: 123,
+                    $eq: 1,
                 },
             },
         },
