@@ -25,7 +25,6 @@ const requestMap = new Map();
 
 
 async function GetAuthRequest(req,res) {
-    console.log('GetAuthRequest', req);
     // Audience is verifier id
     const hostUrl = "http://3.26.13.71:10011";
     const sessionId = 1;
@@ -34,6 +33,7 @@ async function GetAuthRequest(req,res) {
     // const audience = "did:polygonid:polygon:mumbai:2qDyy1kEo2AYcP3RT4XGea7BtxsY285szg6yP9SPrs"
 
     const uri = `${hostUrl}${callbackURL}?sessionId=${sessionId}`;
+    console.log('GetAuthRequest uri', uri);
 
     // Generate request for basic authentication
     const request = auth.createAuthorizationRequest(
@@ -70,7 +70,7 @@ async function GetAuthRequest(req,res) {
 }
 
 async function Callback(req,res) {
-    console.log('Callback req', req);
+    console.log('Callback req.query', req.query);
     // Get session ID from request
     const sessionId = req.query.sessionId;
 
