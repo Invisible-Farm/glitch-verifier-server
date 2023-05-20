@@ -42,16 +42,31 @@ async function GetAuthRequest(req,res) {
         uri,
     );
 
-    request.id = '93603def-f338-4f1a-bdf4-2bdbc388e236';
-    request.thid = '93603def-f338-4f1a-bdf4-2bdbc388e236';
-    request.typ = "application/iden3comm-plain-json";
-    request.type = "https://iden3-communication.io/authorization/1.0/request";
-    request.body.callbackUrl = hostUrl;
-    request.body.reason = "test flow";
-    request.body.scope = [{"id":1,"circuitId":"credentialAtomicQuerySigV2","query":{"allowedIssuers":["*"],"context":"https://raw.githubusercontent.com/0xPolygonID/tutorial-examples/main/credential-schema/schemas-examples/proof-of-dao-role/proof-of-dao-role.jsonld","credentialSubject":{"role":{"$eq":1}},"type":"ProofOfDaoRole"}}];
-    request.from = audience;
+    request.id = '6bcf6e0c-1577-45b3-b309-f8d05e9a0951';
+    request.thid = '6bcf6e0c-1577-45b3-b309-f8d05e9a0951';
+    request.typ = "application/iden3comm-plan-json";
+    reqeust.type = "https://iden3-communication.io/authorization/1.0/request";
 
+    // Add request for a specific proof
+    const proofRequest = {
+        id: 1,
+        circuitId: 'credentialAtomicQuerySigV2',
+        query: {
+            allowedIssuers: ['*'],
+            type: 'ProofOfDaoRole',
+            context: 'https://raw.githubusercontent.com/0xPolygonID/tutorial-examples/main/credential-schema/schemas-examples/proof-of-dao-role/proof-of-dao-role.json',
+            credentialSubject: {
+                role: {
+                    $eq: 1,
+                },
+            },
+        },
+    };
+    const scope = request.body.scope ?? [];
+    request.body.scope = [...scope, proofRequest];
     console.log(request);
+    console.log(scope);
+
     // Store auth request in map associated with session ID
     requestMap.set(`${sessionId}`, request);
 
