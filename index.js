@@ -75,8 +75,8 @@ async function GetAuthRequest(req,res) {
         "type": "https://iden3-communication.io/authorization/1.0/request",
         "thid": "5a044958-93ee-4d55-b3a7-4e01293c7792",
         "body": {
-            // "callbackUrl": "https://self-hosted-demo-backend-platform.polygonid.me/api/callback?sessionId=17302",
-            "callbackUrl": "http://3.26.13.71:10011/api/callback?sessionId=17302",
+            "callbackUrl": "https://self-hosted-demo-backend-platform.polygonid.me/api/callback?sessionId=17302",
+            // "callbackUrl": "http://3.26.13.71:10011/api/callback?sessionId=17302",
             "reason": "test flow",
             "scope": [
                 {
