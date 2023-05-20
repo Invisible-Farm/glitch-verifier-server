@@ -61,6 +61,7 @@ async function GetAuthRequest(req,res) {
         },
     };
     const scope = request.body.scope ?? [];
+    console.log('GetAuthRequest scope', scope)
     request.body.scope = [...scope, proofRequest];
 
     // Store auth request in map associated with session ID
