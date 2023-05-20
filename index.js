@@ -30,14 +30,14 @@ async function GetAuthRequest(req,res) {
     const sessionId = 1;
     const callbackURL = "/api/callback"
     // const audience = "did:polygonid:polygon:mumbai:2qM3XETXF7y49ZA6gDSpzuw38ZSQdfrY9tJtwcjucH" // junho
-    const audience = "did:polygonid:polygon:mumbai:2qJNJzoNXHL32HPPdbJdWAj1PTjjQNi24PyNok6V8G" // dohyeon
+    const audience = "did:polygonid:polygon:mumbai:2qLhNLVmoQS7pQtpMeKHDqkTcENBZUj1nkZiRNPGgV" // provider
 
     const uri = `${hostUrl}${callbackURL}?sessionId=${sessionId}`;
     console.log('GetAuthRequest uri', uri);
 
     // Generate request for basic authentication
     const request = auth.createAuthorizationRequest(
-        'IVFM membership authentication',
+        'test flow',
         audience,
         uri,
     );
@@ -51,6 +51,7 @@ async function GetAuthRequest(req,res) {
     request.body.scope = [{"id":1,"circuitId":"credentialAtomicQuerySigV2","query":{"allowedIssuers":["*"],"context":"https://raw.githubusercontent.com/0xPolygonID/tutorial-examples/main/credential-schema/schemas-examples/proof-of-dao-role/proof-of-dao-role.jsonld","credentialSubject":{"role":{"$eq":1}},"type":"ProofOfDaoRole"}}];
     request.from = audience;
 
+    console.log(request);
     // Store auth request in map associated with session ID
     requestMap.set(`${sessionId}`, request);
 
