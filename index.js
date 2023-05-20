@@ -69,38 +69,8 @@ async function GetAuthRequest(req,res) {
 
     // Store auth request in map associated with session ID
     requestMap.set(`${sessionId}`, request);
-    const aaa = {
-        "id": "5a044958-93ee-4d55-b3a7-4e01293c7792",
-        "typ": "application/iden3comm-plain-json",
-        "type": "https://iden3-communication.io/authorization/1.0/request",
-        "thid": "5a044958-93ee-4d55-b3a7-4e01293c7792",
-        "body": {
-            "callbackUrl": "https://self-hosted-demo-backend-platform.polygonid.me/api/callback?sessionId=17302",
-            // "callbackUrl": "http://3.26.13.71:10011/api/callback?sessionId=17302",
-            "reason": "test flow",
-            "scope": [
-                {
-                    "id": 1,
-                    "circuitId": "credentialAtomicQuerySigV2",
-                    "query": {
-                        "allowedIssuers": [
-                            "*"
-                        ],
-                        "context": "https://raw.githubusercontent.com/0xPolygonID/tutorial-examples/main/credential-schema/schemas-examples/proof-of-dao-role/proof-of-dao-role.jsonld",
-                        "credentialSubject": {
-                            "role": {
-                                "$eq": 1
-                            }
-                        },
-                        "type": "ProofOfDaoRole"
-                    }
-                }
-            ]
-        },
-        "from": "did:polygonid:polygon:mumbai:2qLhNLVmoQS7pQtpMeKHDqkTcENBZUj1nkZiRNPGgV"
-    };
 
-    return res.status(200).set('Content-Type', 'application/json').send(aaa);
+    return res.status(200).set('Content-Type', 'application/json').send({"id":"d542da12-e5ea-4500-bbf6-09c293911a18","typ":"application/iden3comm-plain-json","type":"https://iden3-communication.io/authorization/1.0/request","thid":"d542da12-e5ea-4500-bbf6-09c293911a18","body":{"callbackUrl":"https://self-hosted-demo-backend-platform.polygonid.me/api/callback?sessionId=813765","reason":"test flow","scope":[{"id":1,"circuitId":"credentialAtomicQuerySigV2","query":{"allowedIssuers":["*"],"context":"https://raw.githubusercontent.com/0xPolygonID/tutorial-examples/main/credential-schema/schemas-examples/proof-of-dao-role/proof-of-dao-role.jsonld","credentialSubject":{"role":{"$eq":1}},"type":"ProofOfDaoRole"}}]},"from":"did:polygonid:polygon:mumbai:2qLhNLVmoQS7pQtpMeKHDqkTcENBZUj1nkZiRNPGgV"});
 }
 
 async function Callback(req,res) {
