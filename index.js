@@ -25,18 +25,19 @@ const requestMap = new Map();
 
 
 async function GetAuthRequest(req,res) {
-
+    console.log('GetAuthRequest', req);
     // Audience is verifier id
-    const hostUrl = "<NGROK_URL>";
+    const hostUrl = "http://3.26.13.71:10011";
     const sessionId = 1;
     const callbackURL = "/api/callback"
-    const audience = "did:polygonid:polygon:mumbai:2qDyy1kEo2AYcP3RT4XGea7BtxsY285szg6yP9SPrs"
+    const audience = "did:polygonid:polygon:mumbai:2qM3XETXF7y49ZA6gDSpzuw38ZSQdfrY9tJtwcjucH"
+    // const audience = "did:polygonid:polygon:mumbai:2qDyy1kEo2AYcP3RT4XGea7BtxsY285szg6yP9SPrs"
 
     const uri = `${hostUrl}${callbackURL}?sessionId=${sessionId}`;
 
     // Generate request for basic authentication
     const request = auth.createAuthorizationRequest(
-        'test flow',
+        'IVFM membership authentication',
         audience,
         uri,
     );
@@ -50,11 +51,11 @@ async function GetAuthRequest(req,res) {
         circuitId: 'credentialAtomicQuerySigV2',
         query: {
             allowedIssuers: ['*'],
-            type: 'KYCAgeCredential',
-            context: 'https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/kyc-v3.json-ld',
+            type: 'ProofOfDaoRole',
+            context: 'https://raw.githubusercontent.com/0xPolygonID/tutorial-examples/main/credential-schema/schemas-examples/proof-of-dao-role/proof-of-dao-role.jsonld',
             credentialSubject: {
-                birthday: {
-                    $lt: 20000101,
+                role: {
+                    $eq: 123,
                 },
             },
         },
@@ -69,7 +70,7 @@ async function GetAuthRequest(req,res) {
 }
 
 async function Callback(req,res) {
-
+    console.log('Callback req', req);
     // Get session ID from request
     const sessionId = req.query.sessionId;
 
@@ -77,7 +78,7 @@ async function Callback(req,res) {
     const raw = await getRawBody(req);
     const tokenStr = raw.toString().trim();
 
-    const ethURL = '<MUMBAI_RPC_URL>';
+    const ethURL = 'https://polygon-mumbai.g.alchemy.com/v2/W-XkZND8K-Mm3uW09In9Atd66Dj2j2X6';
     const contractAddress = "0x134B1BE34911E39A8397ec6289782989729807a4"
     const keyDIR = "../keys"
 
