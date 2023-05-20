@@ -42,8 +42,8 @@ async function GetAuthRequest(req,res) {
         uri,
     );
 
-    request.id = '6bcf6e0c-1577-45b3-b309-f8d05e9a0951';
-    request.thid = '6bcf6e0c-1577-45b3-b309-f8d05e9a0951';
+    request.id = '93603def-f338-4f1a-bdf4-2bdbc388e236';
+    request.thid = '93603def-f338-4f1a-bdf4-2bdbc388e236';
     request.typ = "application/iden3comm-plan-json";
     request.type = "https://iden3-communication.io/authorization/1.0/request";
 
